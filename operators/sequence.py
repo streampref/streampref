@@ -316,3 +316,4 @@ class MinseqOp(GenericSeqOp):
             self._sequence_list = []
             raise NotImplementedError('Operator not implemented: {m}'.
                                       format(m=self._operator_name))
+
