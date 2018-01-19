@@ -1,0 +1,23 @@
+SELECT * FROM t1
+WHERE a1 = 1
+
+UNION
+
+SELECT * FROM t2
+WHERE NOT a2 < 1
+
+UNION
+
+SELECT * FROM t3
+WHERE NOT a3 < 5 OR NOT a3 > 10
+
+UNION
+
+SELECT * FROM t4
+WHERE a4 >= 3 AND a4 <= 20 AND a44 = 100
+
+UNION
+
+SELECT * FROM t5, t6
+WHERE t5.a5 = t6.a6 AND t5.a5 >= 2 and t6.a6 <= 100
+;

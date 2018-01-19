@@ -1,0 +1,9 @@
+A = -1.5 > (A = 2)
+AND
+3 <= A < 5 BETTER X.A >= 6
+AND
+B = 'um' > B = 'dois' [C, D]
+AND
+IF E = 'três' THEN B = 'dois' > B = 'três'
+AND
+IF E = 'quatro' AND (F = 'cinco') THEN B = 'três' > B = 'dois' (D,G)

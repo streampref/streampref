@@ -1,0 +1,13 @@
+A = 1 > (A = 2)
+AND
+3 <= A < 5 BETTER X.A >= 6
+AND
+B = 'um' > B = 'dois' [C, D]
+AND
+IF E = 'três' THEN B = 'dois' > B = 'três'
+AND
+IF E = 'quatro' AND (F = 'cinco') THEN B = 'três' > B = 'dois' (D,G)
+AND
+IF First AND A = 5 THEN B= 1 > (B=2) [C,D]
+AND
+IF Some previous C = 1 AND ALL PREVIOUS (D=2) AND A = 2 AND PREVIOUS I = 10 THEN E>5 BETTER E<=5 (F,G,H)
