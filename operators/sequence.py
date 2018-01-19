@@ -6,9 +6,9 @@ Module with operators
 from abc import abstractmethod
 import logging
 
-from grammar.symbols import POS_SYM, INTEGER_SYM, STREAM_SYM
 from control.attribute import Attribute
 from control.sequence import Sequence
+from grammar.symbols import POS_SYM, INTEGER_SYM, STREAM_SYM
 from operators.basic import UnaryOp, record_projection
 from operators.window import get_start_end
 
@@ -20,6 +20,7 @@ class GenericSeqOp(UnaryOp):
     '''
     Generic sequence operator
     '''
+
     def __init__(self, operand):
         UnaryOp.__init__(self, operand)
         self._sequence_list = []
@@ -48,7 +49,7 @@ class GenericSeqOp(UnaryOp):
             LOG.debug('%s executed at timestamp %s',
                       self._operator_str, self._timestamp)
             str_list = [str(item) for item in self.get_sequence_list()]
-            LOG.debug('Current List (' + str(len(str_list)) + '):\n' +
+            LOG.debug('Current List (' + str(len(str_list)) + '):\n' + 
                       '\n'.join(str_list))
 
     @abstractmethod
@@ -67,6 +68,7 @@ class SeqOp(GenericSeqOp):  # IGNORE:too-many-instance-attributes
     identifier, if there are simultaneous records with same identifier
     the identified sequence is copied, one copy for each record
     '''
+
     def __init__(self, operand, identifier_list, range_slide):
         GenericSeqOp.__init__(self, operand)
         # Copy operand attribute list because it will be changed
@@ -194,6 +196,7 @@ class ConseqOp(GenericSeqOp):
     '''
     Temporal preference operator
     '''
+
     def __init__(self, operand, subseq_alg):
         GenericSeqOp.__init__(self, operand)
         # Subsequence algorithm
@@ -226,6 +229,7 @@ class EndseqOp(GenericSeqOp):
     '''
     Temporal preference operator
     '''
+
     def __init__(self, operand, subseq_alg):
         GenericSeqOp.__init__(self, operand)
         # Subsequence algorithm
@@ -258,6 +262,7 @@ class MaxseqOp(GenericSeqOp):
     '''
     Operator for sequence filtering by maximum length
     '''
+
     def __init__(self, operand, max_length):
         GenericSeqOp.__init__(self, operand)
         # Maximum length
@@ -290,6 +295,7 @@ class MinseqOp(GenericSeqOp):
     '''
     Operator for sequence filtering by maximum length
     '''
+
     def __init__(self, operand, min_length):
         GenericSeqOp.__init__(self, operand)
         # Maximum length
