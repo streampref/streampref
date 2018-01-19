@@ -1,0 +1,3 @@
+SELECT b AS bb, MIN(a)
+FROM r2
+GROUP BY b;

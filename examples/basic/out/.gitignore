@@ -1,0 +1,17 @@
+/q01_select.out
+/q02_select.out
+/q03_cross.out
+/q04_join.out
+/q05_bag.out
+/q06_rstream.out
+/q07_istream.out
+/q08_dstream.out
+/q09_window.out
+/q10_window2.out
+/q11_window_bag.out
+/q12_seq.out
+/q13_seq_slide.out
+/q14_conseq.out
+/q15_distinct.out
+/q16_aggregation.out
+/q17_or.out

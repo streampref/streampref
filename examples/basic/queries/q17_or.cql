@@ -1,0 +1,4 @@
+SELECT *
+FROM r2
+WHERE a = 1 OR NOT a = 10
+;
