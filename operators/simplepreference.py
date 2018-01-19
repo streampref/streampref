@@ -32,7 +32,6 @@ class PreferenceOp(UnaryOp):
         self._top = topk
         # Best algorithm to be used
         self._pref_alg = pref_alg
-#         LOG.info(str(self) + ' - Preference algorithm:' + self._pref_alg)
         # Update data (level, ancestor)
         # Used in some algorithms
         self._update_data_level = None
