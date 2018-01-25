@@ -1,2 +1,2 @@
-# streampref
+# StreamPref
 StreamPref DSMS Prototype
