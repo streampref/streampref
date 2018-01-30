@@ -1,0 +1,9 @@
+SELECT * FROM players AS p
+ACCORDING TO PREFERENCES
+(function = 'midfield') > (function = 'attack')[name, goals, league]
+AND
+(function = 'attack') > (function = 'defense')[name, goals, league]
+AND
+IF (function = 'midfield') THEN (goals <= 20) > (goals > 20)[name]
+AND
+IF (function = 'attack') THEN (goals > 20) > (goals <= 20)[name];

@@ -1,0 +1,12 @@
+_ts,  _fl,  name,    country, sector, trading_rate, price
+  0,    +,  Stock 1, Germany,      A,          0.3, 30
+  0,    +,  Stock 2, Brazil,       B,          0.3, 65
+  0,    +,  Stock 3, USA,          B,          0.3, 70
+  0,    +,  Stock 4, USA,          A,          0.3, 50
+  0,    +,  Stock 5, USA,          A,          0.3, 80
+  0,    +,  Stock 6, France,       A,          0.6, 90
+  0,    +,  Stock 7, Brazil,       B,          0.5, 75
+  1,    -,  Stock 6, France,       A,          0.6, 90
+  1,    -,  Stock 7, Brazil,       B,          0.5, 75
+  1,    +,  Stock 8, France,       B,          0.2, 40
+  1,    +,  Stock 9, Brazil,       B,          0.6, 60

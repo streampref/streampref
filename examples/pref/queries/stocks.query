@@ -1,0 +1,10 @@
+SELECT * FROM stocks AS s
+ACCORDING TO PREFERENCES
+sector = 'A' BETTER sector = 'B' [name, price]
+AND
+IF sector = 'B' THEN country = 'USA' BETTER country = 'Brazil' [name, price]
+AND
+trading_rate >= 0.4 BETTER trading_rate < 0.4 [country, name, price]
+AND
+IF trading_rate < 0.4 THEN price < 60 BETTER price >= 60 [name];
+

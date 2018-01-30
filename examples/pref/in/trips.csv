@@ -1,0 +1,6 @@
+_ts, _fl, destination,   price, duration, itinerary
+  0,   +, Angra,          2000,        4, cruise
+  0,   +, Buzios,         2000,        5, beach
+  0,   +, Salvador,       2600,        6, cruise
+  0,   +, Belo Horizonte, 2700,        5, urban
+  0,   +, Rio de Janeiro, 2600,        7, beach

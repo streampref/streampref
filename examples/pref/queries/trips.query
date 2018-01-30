@@ -1,0 +1,7 @@
+SELECT * FROM trips AS t
+PREFERENCES
+itinerary = 'cruise' BETTER itinerary = 'beach' [destination, duration]
+AND
+itinerary = 'beach' BETTER itinerary = 'urban' [price, destination]
+AND
+IF itinerary = 'cruise' then price < 2500 BETTER price >= 2500 [destination, duration];
