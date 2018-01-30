@@ -1,0 +1,11 @@
+SELECT SUBSEQUENCE CONSECUTIVE TUPLES
+FROM SEQUENCE IDENTIFIED BY pid [RANGE 20 SECOND]
+FROM moves AS m
+ACCORDING TO TEMPORAL PREFERENCES
+  IF FIRST THEN move = 'rec' BETTER move = 'lbal'
+AND
+  IF PREVIOUS (move = 'cond') THEN (move = 'drib') BETTER (move = 'pass')[place]
+AND
+  (move = 'pass') BETTER (move = 'bpas')[place]
+AND
+  IF ALL PREVIOUS (place = 'oi') THEN (place = 'oi') BETTER (place = 'mf');

@@ -1,0 +1,20 @@
+_ts, pid, place, move
+  1,   1,    mf, pass
+  2,   1,    mf, lbal
+  6,   3,    oi, rec
+  7,   3,    oi, cond
+  8,   3,    oi, bpas
+ 12,   1,    mf, rec
+ 13,   1,    oi, cond
+ 14,   1,    oi, drib
+ 15,   2,    mf, lbal
+ 16,   2,    oi, cond
+ 17,   2,    oi, pass
+ 18,   4,    oi, rec
+ 19,   4,    mf, cond
+ 20,   4,    oa, cond
+ 21,   1,    oi, cond
+ 22,   1,    oi, drib
+ 23,   2,    mf, lbal
+ 24,   3,    oi, cond
+ 25,   2,    oi, pass
