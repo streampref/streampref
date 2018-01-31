@@ -1,0 +1,78 @@
+query = ( stream_query | sequence_query | bag_query ) , ";" ;
+stream_query = "SELECT" , stream_operation , "FROM" , table_window ;
+sequence_query = "SELECT" , [ topk ] ,
+                 [ [ end_position ] , consecutive_tuples ] ,
+                 sequence_operation ,
+                 "FROM" , from_stream ,
+                 [ "WHERE" , min_max_lenght ] ,
+                 [ temporal_preferences ] ;
+bag_query = simple_query , { bag_operation , simple_query } ;
+end_position = "SUBSEQUENCE" , "END" , "POSITION" , "FROM" ;
+consecutive_tuples = "SUBSEQUENCE" , "CONSECUTIVE" , "TUPLES" , "FROM" ;
+sequence_operation = "SEQUENCE" , "IDENTIFIED" , "BY" attribute_list ,
+                     sequence_window ;
+temporal_preferences = [ "ACCORDING" , "TO"] , "TEMPORAL" , "PREFERENCES" ,
+                       temporal_theory ;
+from_stream =  stream , [ "AS" , identifier] |
+              stream_operation , "FROM" , "(" , table_window , ")" ;
+stream_operation = "DSTREAM" | "ISTREAM" | "RSTREAM" ;
+sequence_window = "[" , "RANGE" , time_term  ,
+                  [ "," , "SLIDE" , time_term  ] , "]" ;
+min_max_lenght = minimum | maximum | minimum , "AND" , maximum ;
+minimum = "MINIMUM" , "LENGTH" , "IS" , integer ;
+maximum = "MAXIMUM" , "LENGTH" , "IS" , integer ;
+simple_query = simple_select , simple_from , [ where ] , [ preferences ] ,
+               [ group_by ] ;
+simple_select = "SELECT" , [ "DISTINCT" ] , [ topk ] ,
+                select_term , { "," , select_term } ;
+simple_from = "FROM" , table_window , { "," , table_window } ;
+group_by = "GROUP BY" , identifier , { "," , identifier } ;
+bag_operation = "UNION" | "DIFFERENCE" | "EXCEPT" ;
+select_term = expression , [ "AS" , identifier ] |
+              aggregation_expression , [ "AS" , identifier ] |
+              [ identifier , "." ] , "*" ;
+where = "WHERE" , where_term , { "AND" , where_term } |
+        "WHERE" , where_term , { "OR"  , where_term } ;
+where_term = [ "NOT" ] , expression , operator , expression ;
+preferences = [ "ACCORDING" , "TO" ] , "PREFERENCES" , theory ;
+table_window = identifier , [ "[" , window , "]" , ] ,
+               [ "AS" , identifier ] ;
+window = "NOW" | [ "RANGE" ] , "UNBOUNDED" |
+         "RANGE" , time_term , [ "," , "SLIDE" , time_term ] ;
+time_term = integer ( "SECOND" | "MINUTE" | "HOUR" | "DAY" ) ;
+topk = "TOP" , "(" , integer , ")";
+temporal_theory = temporal_rule , { "AND" , temporal_rule } ;
+theory = rule , { "AND" , rule } ;
+temporal_rule = [ "IF" , temporal_condition , "THEN" ] ,
+                preference , [ indifferent_attributes] ;
+rule = [ "IF" , condition , "THEN" ],  preference ,
+       [ indifferent_attributes] ;
+temporal_condition = temporal_predicate , { "AND", temporal_predicate } ;
+condition = predicate , { "AND", predicate } ;
+temporal_predicate = predicate | derived_formula ;
+derived_formula = "FIRST" | "PREVIOUS" , "(", predicate , ")" |
+                  "SOME" , "PREVIOUS" , "(", predicate , ")" |
+                  "ALL" , "PREVIOUS" , "(", predicate , ")" ;
+preference = predicate , ( "BETTER" | ">" ) , predicate ;
+predicate = identifier , operator , value |
+            value , interval_operator , identifier ,
+            interval_operator , value ;
+indifferent_attributes = "[" , identifier , { identifier } , "]" ;
+expression = identifier | value | expression , arithmetic , expression |
+             "(" , expression , ")" ;
+aggregation_expression = aggregation_function, "(", expression , ")" ;
+aggregation_function = "MIN" | "MAX" | "SUM" | "COUNT" ;
+operator = "<" | "<=" | "=" | ">=" | ">" ;
+interval_operator = "<" | "<=" ;
+identifier = alpha , { alpha | digit } ;
+value = integer | float | string ;
+float = integer | integer , "." , { integer } | { integer } , "." , integer ;
+integer = digit , { digit } ;
+string = "'" , { alpha | digit } , "'" ;
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+alpha = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" |
+        "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "W" | "X" |
+        "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" |
+        "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" |
+        "w" | "x" | "y" | "z" ;
+arithmetic = "+" | "-" | "*" | "/" ;
