@@ -101,11 +101,9 @@ Please see the directory __examples__ for more examples.
 # Command Line
 
 ```
-usage: streampref.py [-h] -e ENV [-m MAX] [-l LOG] [-D] [-o OUTCOMP]
-                     [-d DETAILS] [-r DELIMITER] [-p PREF_ALG] [-t TPREF_ALG]
-                     [-s SUBSEQ_ALG]
-
-optional arguments:
+streampref.py [-h] -e ENV [-m MAX] [-l LOG] [-D] [-o OUTCOMP]
+              [-d DETAILS] [-r DELIMITER] [-p PREF_ALG] [-t TPREF_ALG]
+              [-s SUBSEQ_ALG]
   -h, --help                              Show the help message and exit
   -e ENV, --env ENV                       Environment file
   -m MAX, --max MAX                       Maximum timestamp to run
@@ -138,3 +136,5 @@ The evaluation of the algorithms __BESTSEQ__ and __TOPKSEQ__ can be performed by
 - *depth_search*: Depth search first algorithm (non incremental);
 - *inc_seqtree*: Algorithm using the sequences tree index (incremental);
 - *inc_seqtree_pruning*: Algorithm using the sequences tree index with pruning strategy (incremental).
+
+Please see the related publications for more information.
