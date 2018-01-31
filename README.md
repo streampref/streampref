@@ -1,7 +1,8 @@
-**Table of Contents**
+# Table of Contents
 
 - [Introduction](#introduction)
 - [Command Line](#command-line)
+- [Algorithms](#algorithms)
 
 # Introduction
 
@@ -117,3 +118,23 @@ optional arguments:
   -t TPREF_ALG, --tpref TPREF_ALG         Temporal preference algorithm
   -s SUBSEQ_ALG, --subseq SUBSEQ_ALG      Subsequence algorithm
 ```
+
+# Algorithms
+
+When the queries have the operators __BEST__, __TOPK__, __CONSEQ__, __ENDSEQ__, __BESTSEQ__ and __TOPKSEQ__, the user can choose an algorithm to evaluate the operators.
+The evaluations of the operators __BEST__ and __TOPK__ can be performed by the following algorithms:
+- *depth_search*: Depth search first comparison algorithm (non incremental);
+- *partition*: Preference partition algorithm (non incremental);
+- *inc_ancestors*: Ancestors list algorithm (incremental);
+- *inc_graph*: Graph algorithm (incremental);
+- *inc_graph_no_transitive*: Graph algorithm without transitive comparisons (incremental); 
+- *inc_partition*: Preference partition algorithm (incremental).
+
+The evaluation of operators __CONSEQ__ and __ENDSEQ__ can be performed by the following algorithms:
+- *naive*: Naive algorithm (non incremental);
+- *incremental*: Incremental algorithm using deletions and insertions.
+
+The evaluation of the algorithms __BESTSEQ__ and __TOPKSEQ__ can be performed by the following algorithms:
+- *depth_search*: Depth search first algorithm (non incremental);
+- *inc_seqtree*: Algorithm using the sequences tree index (incremental);
+- *inc_seqtree_pruning*: Algorithm using the sequences tree index with pruning strategy (incremental).
