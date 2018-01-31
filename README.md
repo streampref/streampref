@@ -75,16 +75,34 @@ _ts, _fl, a, b,  c
   4, +, 3, CC, 1.0
 ```
 
-Example of an query file:
+The query file content must follow the StreamPref grammar (see file __grammar/streampref.ebnf__).
+Example of an query file with temporal conditional preferences:
 
-Please see the directory [examples](examples/) for more examples.
+```
+SELECT SUBSEQUENCE END POSITION
+FROM SUBSEQUENCE CONSECUTIVE TUPLES
+FROM SEQUENCE IDENTIFIED BY pid [RANGE 20 SECOND]
+FROM moves AS m
+WHERE MINIMUM LENGTH IS 2
+AND MAXIMUM LENGTH IS 4
+ACCORDING TO TEMPORAL PREFERENCES
+IF FIRST THEN move = 'rec' BETTER move = 'lbal'
+AND
+IF PREVIOUS (move = 'cond') THEN (move = 'drib') BETTER (move = 'pass')[place]
+AND
+(move = 'pass') BETTER (move = 'bpas')[place]
+AND
+IF ALL PREVIOUS (place = 'oi') THEN (place = 'oi') BETTER (place = 'mf');
+```
+
+Please see the directory __examples__ for more examples.
 
 # Command Line
 
 ```
-usage: StreamPref [-h] -e ENV [-m MAX] [-l LOG] [-D] [-o OUTCOMP]
-                  [-d DETAILS] [-r DELIMITER] [-p PREF_ALG] [-t TPREF_ALG]
-                  [-s SUBSEQ_ALG]
+usage: streampref.py [-h] -e ENV [-m MAX] [-l LOG] [-D] [-o OUTCOMP]
+                     [-d DETAILS] [-r DELIMITER] [-p PREF_ALG] [-t TPREF_ALG]
+                     [-s SUBSEQ_ALG]
 
 optional arguments:
   -h, --help                              Show the help message and exit
