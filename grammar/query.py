@@ -31,7 +31,7 @@ class QueryGrammar(object):
     <stream-query> ::=
         'SELECT' <stream-operation> 'FROM' '(' <table-window> ')'
     <sequence-query> :=
-        'SELECT' ['TOP('<integer>')']
+        'SELECT' ['TOP' '('<integer>')']
             [['SUBSEQUENCE' 'END' 'POSITION' 'FROM']
             'SUBSEQUENCE' 'CONSECUTIVE' 'TIMESTAMP' 'FROM']
             'SEQUENCE' 'IDENTIFIED' 'BY' <attribute-list>
@@ -298,7 +298,7 @@ def stream_query():
 def sequence_query():
     '''
     <sequence-query> :=
-        'SELECT' ['TOP('<integer>')']
+        'SELECT' ['TOP' '('<integer>')']
             [['SUBSEQUENCE' 'END' 'POSITION' 'FROM']
             'SUBSEQUENCE' 'CONSECUTIVE' 'TIMESTAMP' 'FROM']
             'SEQUENCE' 'IDENTIFIED' 'BY' <attribute-list>
